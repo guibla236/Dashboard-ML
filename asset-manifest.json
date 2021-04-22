@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Dashboard-ML/static/css/main.28f96167.chunk.css",
+    "main.js": "/Dashboard-ML/static/js/main.17b31d4e.chunk.js",
+    "main.js.map": "/Dashboard-ML/static/js/main.17b31d4e.chunk.js.map",
+    "runtime-main.js": "/Dashboard-ML/static/js/runtime-main.7c9c3dfc.js",
+    "runtime-main.js.map": "/Dashboard-ML/static/js/runtime-main.7c9c3dfc.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/Dashboard-ML/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.94314e90.chunk.js": "/Dashboard-ML/static/js/2.94314e90.chunk.js",
+    "static/js/2.94314e90.chunk.js.map": "/Dashboard-ML/static/js/2.94314e90.chunk.js.map",
+    "static/js/3.417934ae.chunk.js": "/Dashboard-ML/static/js/3.417934ae.chunk.js",
+    "static/js/3.417934ae.chunk.js.map": "/Dashboard-ML/static/js/3.417934ae.chunk.js.map",
+    "index.html": "/Dashboard-ML/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/Dashboard-ML/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.28f96167.chunk.css.map": "/Dashboard-ML/static/css/main.28f96167.chunk.css.map",
+    "static/js/2.94314e90.chunk.js.LICENSE.txt": "/Dashboard-ML/static/js/2.94314e90.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c9c3dfc.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.94314e90.chunk.js",
+    "static/css/main.28f96167.chunk.css",
+    "static/js/main.17b31d4e.chunk.js"
+  ]
+}
