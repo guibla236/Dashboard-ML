@@ -1,0 +1,78 @@
+import React, { useContext, useState } from 'react';
+import { Row, Col, Card, CardTitle, Button } from 'reactstrap';
+import ContextData from './ContextInputData.jsx'
+
+const ExploreDataset = () => {
+    const data = useContext(ContextData)[0];
+    console.log(data.values);
+    const [propierties1, setPropierties1] = useState()
+    const [propierties2, setPropierties2] = useState()
+    return (
+        <div className="App">
+            <Row>
+                <Col>
+                    {Object.keys(data.values).map((key) => {
+                        return <SelectDataCard
+                            title={data.values[key].titulo}
+                            childData={data.values[key]}
+                            setPropierties={setPropierties1}
+                        />;
+                    })}
+                </Col>
+                <Col sm="3">
+                    {propierties1 !== undefined
+                        ?
+                        Object.keys(propierties1.data).map((key) => {
+                            return <SelectDataCard
+                                title={key}
+                                childData={propierties1.data[key]}
+                                setPropierties={setPropierties2}
+                            />
+                        })
+                        : <div>NADA</div>}
+                </Col>
+                <Col sm="3">
+                    {propierties2 !== undefined
+                        ?
+                        Object.keys(propierties2.data).map((key) => {
+                            return <SelectDataCard
+                                title={key}
+                                childData={propierties2.data[key]}
+                                setPropierties={setPropierties2}
+                            />
+                        })
+                        : <div>NADA</div>}
+                </Col>
+            </Row>
+        </div>
+
+    )
+}
+
+const SelectDataCard = (props) => {
+    console.log("title=" + props.title);
+    console.log(props.childData);
+    return (
+        <div className="data-selector">
+            <Card>
+                <CardTitle>
+                    <Row>
+                        <Col>
+                            {props.title}
+                        </Col>
+                        <Col sm="1">
+                            <Button onClick={() => props.setPropierties({ data: props.childData })}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                                </svg></Button>
+                        </Col>
+                    </Row>
+                </CardTitle>
+            </Card>
+
+        </div>
+
+
+    )
+}
+export default ExploreDataset;
