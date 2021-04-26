@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Dashboard-ML/static/css/main.083c3669.chunk.css",
+    "main.css": "/Dashboard-ML/static/css/main.7e148f3c.chunk.css",
     "main.js": "/Dashboard-ML/static/js/main.05821c8f.chunk.js",
     "main.js.map": "/Dashboard-ML/static/js/main.05821c8f.chunk.js.map",
     "runtime-main.js": "/Dashboard-ML/static/js/runtime-main.748087c9.js",
@@ -12,7 +12,7 @@
     "static/js/3.19e15add.chunk.js.map": "/Dashboard-ML/static/js/3.19e15add.chunk.js.map",
     "index.html": "/Dashboard-ML/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/Dashboard-ML/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.083c3669.chunk.css.map": "/Dashboard-ML/static/css/main.083c3669.chunk.css.map",
+    "static/css/main.7e148f3c.chunk.css.map": "/Dashboard-ML/static/css/main.7e148f3c.chunk.css.map",
     "static/js/2.493ecb7f.chunk.js.LICENSE.txt": "/Dashboard-ML/static/js/2.493ecb7f.chunk.js.LICENSE.txt",
     "static/media/collecting-data.63a7cc40.png": "/Dashboard-ML/static/media/collecting-data.63a7cc40.png"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.748087c9.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.493ecb7f.chunk.js",
-    "static/css/main.083c3669.chunk.css",
+    "static/css/main.7e148f3c.chunk.css",
     "static/js/main.05821c8f.chunk.js"
   ]
 }
