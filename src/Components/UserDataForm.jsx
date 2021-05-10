@@ -2,19 +2,19 @@
 import { useContext } from 'react';
 import { withRouter } from "react-router";
 import { Card, CardBody, CardTitle, Button } from 'reactstrap';
-import InputData from './ContextInputData.jsx';
+import InputData from './Contexts/ContextInputData.jsx';
 
 const UserDataForm = (props) => {
     const [data, setData] = useContext(InputData)
     return (
         <>
-            <Card>
+            <Card style={{"background-color":"#282c34"}}>
                 <CardTitle>
                     <hr />
                 Información recolectada
                 <hr />
                 </CardTitle>
-                <Card>
+                <Card style={{"background-color":"#282c34"}}>
                     <CardBody>
                         <textarea
                             value={data.input}

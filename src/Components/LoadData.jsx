@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 
 import {
@@ -9,46 +9,61 @@ import {
 
 import UserDataForm from "./UserDataForm.jsx";
 import PredefinedDataList from "./PredefinedDataList.jsx";
-import InputData from './ContextInputData.jsx';
+import InputData from './Contexts/ContextInputData.jsx';
+import cafeteras from '../extra_data/cafeteras.js';
+import macs from '../extra_data/macs.js';
+import televisores from '../extra_data/televisores.js';
+import sillones from '../extra_data/sillones.js';
 
 const LoadData = (props) => {
   let history = useHistory();
   const setValues = useContext(InputData)[1]
 
-  function onSelectedData(data) {
-    const dataset = JSON.parse(data)
-    setValues(dataset);
+  function onInputedData(data) {
+    setValues(JSON.parse(data));
+    history.push('/analyse/');
+  }
+
+  function onSelectedData(data){
+    setValues(data);
     history.push('/analyse/');
   }
   return (
     <Container>
       <Row>
         <Col>
-          <UserDataForm onSelectedData={onSelectedData}/>
+          <UserDataForm onSelectedData={onInputedData} />
         </Col>
 
         <Col sm="3" className="scroll-list">
           <hr />
+          <div className="scroll-list-title">
+            Datos de ejemplo
+          </div>
+          <hr />
+          <PredefinedDataList
+            title="Cafeteras"
+            details="Nuevas"
+            onSelectedData={onSelectedData}
+            data={cafeteras} />
 
           <PredefinedDataList
-            title="Datos 1"
-            details="Detalles de datos 1" 
-            onSelectedData={onSelectedData} />
+            title="Macbook Air"
+            details="Nuevas"
+            onSelectedData={onSelectedData}
+            data={macs} />
 
           <PredefinedDataList
-            title="Datos 2"
-            details="Detalles de datos 2"
-            onSelectedData={onSelectedData} />
-
-          <PredefinedDataList 
-           title="Datos 3"
-           details="Detalles de datos 3"
-           onSelectedData={onSelectedData} />
+            title="Televisores Samsung"
+            details="Nuevos, solo Montevideo"
+            onSelectedData={onSelectedData}
+            data={televisores} />
 
           <PredefinedDataList
-           title="Datos 4" 
-           details="Detalles de datos 4"
-           onSelectedData={onSelectedData} />
+            title="Sillones"
+            details="Usados, solo Maldonado"
+            onSelectedData={onSelectedData}
+            data={sillones} />
           <hr />
         </Col>
       </Row>

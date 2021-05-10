@@ -26,20 +26,8 @@ function getDetailedFeatures(data) {
     return c;
 }
 
-function filterDataByDetailedFeatures(data, setData, item, subitem, value) {
-    let query = [item, subitem, value];
-    function filterFunction(sampleElement) {
-        //sampleElement is the individual article
-        if (sampleElement["caract_det"][this[0]][this[1]] === this[2]) {
-            return true;
-        }
-        return false;
-    }
-    setData(data.filter(filterFunction, query));
-}
-
-
 const DetailedData = (props) => {
+
     const data = getDetailedFeatures(props.rawData);
 
     const state_base = {}
@@ -67,6 +55,21 @@ const DetailedData = (props) => {
         setDetalladas(oldData)
     };
 
+    function filterDataByDetailedFeatures(item, subitem, value) {
+
+        if (props.filters.detailed === undefined){
+            props.filters.detailed = [[item, subitem, value]];
+        }
+        else{
+            props.filters.detailed.push([item,subitem, value]);
+        }
+        props.setFilters({...props.filters});
+        
+        setBasicas(state_base);
+        setDetalladas(state_detailed);
+        props.toggle();
+    }
+    
     const colorItem = { backgroundColor: 'lightgray' }
     const colorSub = { backgroundColor: 'silver' }
     
@@ -77,7 +80,6 @@ const DetailedData = (props) => {
                     <Card className="capitalize" style={colorItem} onClick={e => toggle_basicas(item)}>
                         <h6>{item}</h6>
                     </Card>
-
                     <Col>
                         <Collapse isOpen={basicas[item]}>
                             <Col>
@@ -99,8 +101,7 @@ const DetailedData = (props) => {
                                                                             color="secondary"
                                                                             className="capitalize"
                                                                             size="sm"
-                                                                            onClick={e => filterDataByDetailedFeatures(props.rawData,
-                                                                                props.setRawData,
+                                                                            onClick={e => filterDataByDetailedFeatures(
                                                                                 item,
                                                                                 subitem,
                                                                                 data[item][subitem][ssitem])}>

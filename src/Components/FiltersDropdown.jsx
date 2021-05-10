@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Card, Collapse, Row, Col, CardTitle,CardBody } from 'reactstrap';
-import BasicData from './BasicData.jsx';
-import DetailedData from './DetailedData.jsx';
-import FilterRange from './FilterRange.jsx';
-import FilterBySolder from './FilterBySolder.jsx';
+import { Card, Collapse, Row, Col, CardTitle, CardBody } from 'reactstrap';
+import BasicData from './Data Management/BasicData.jsx';
+import DetailedData from './Data Management/DetailedData.jsx';
+import FilterRange from './Data Management/FilterRange.jsx';
+import FilterBySeller from './Data Management/FilterBySeller.jsx';
 
 const FiltersDropdown = (props) => {
+
     const [basicDiv, setBasicDiv] = useState(false);
     const toggleBasic = () => setBasicDiv(!basicDiv);
 
@@ -21,15 +22,14 @@ const FiltersDropdown = (props) => {
     const [soldedAmount, setSoldedAmount] = useState(false);
     const toggleSoldedAmount = () => setSoldedAmount(!soldedAmount);
 
-    const [solder, setSolder] = useState(false);
-    const toggleSolder = () => setSolder(!solder);
+    const [seller, setSeller] = useState(false);
+    const toggleSeller = () => setSeller(!seller);
 
     const color = { backgroundColor: 'ghostwhite' }
 
-
     return (
         <div>
-            <Row sm={5}>
+            <Row sm={5} style={{ 'marginTop': '20px' }}>
                 <Col sm={5}>
                     <Card>
                         <CardTitle><h3>Filtros disponibles</h3></CardTitle>
@@ -41,7 +41,10 @@ const FiltersDropdown = (props) => {
                                 <Collapse isOpen={basicDiv}>
                                     <BasicData
                                         rawData={props.rawData}
-                                        setRawData={props.setRawData} />
+                                        setRawData={props.setRawData}
+                                        toggle={toggleBasic}
+                                        filters={props.filters}
+                                        setFilters={props.setFilters} />
                                 </Collapse>
                             </Col>
 
@@ -51,49 +54,51 @@ const FiltersDropdown = (props) => {
                             <Collapse isOpen={detailedDiv}>
                                 <DetailedData
                                     rawData={props.rawData}
-                                    setRawData={props.setRawData} />
+                                    toggle={toggleDetailed}
+                                    filters={props.filters}
+                                    setFilters={props.setFilters} />
                             </Collapse>
+                                <Card onClick={toggleDollarInterval} style={color}>
+                                    <h5>Intervalo de precios en dólares</h5>
+                                </Card>
+                                <Collapse isOpen={dollarInterval}>
+                                    <FilterRange
+                                        type="dolares"
+                                        toggle={toggleDollarInterval}
+                                        filters={props.filters}
+                                        setFilters={props.setFilters} />
+                                </Collapse>
 
-                            <Card onClick={toggleDollarInterval} style={color}>
-                                <h5>Intervalo de precios en dólares</h5>
-                            </Card>
-                            <Collapse isOpen={dollarInterval}>
-                                <FilterRange
-                                    type="dollars"
-                                    rawData={props.rawData}
-                                    setRawData={props.setRawData} />
-                            </Collapse>
+                                <Card onClick={togglePesosInterval} style={color}>
+                                    <h5>Intervalo de precios en pesos</h5>
+                                </Card>
+                                <Collapse isOpen={pesosInterval}>
+                                    <FilterRange
+                                        type="pesos"
+                                        toggle={togglePesosInterval}
+                                        filters={props.filters}
+                                        setFilters={props.setFilters} />
+                                </Collapse>
 
-                            <Card onClick={togglePesosInterval} style={color}>
-                                <h5>Intervalo de precios en pesos</h5>
-                            </Card>
-                            <Collapse isOpen={pesosInterval}>
-                                <FilterRange
-                                    type="pesos"
-                                    rawData={props.rawData}
-                                    setRawData={props.setRawData} />
-                            </Collapse>
-
-                            <Card onClick={toggleSoldedAmount} style={color}>
-                                <h5>Intervalo de cantidad de ventas</h5>
-                            </Card>
-                            <Collapse isOpen={soldedAmount}>
-                                <FilterRange
-                                    type="amount-solded"
-                                    rawData={props.rawData}
-                                    setRawData={props.setRawData} />
-                            </Collapse>
-
-                            <Card onClick={toggleSolder} style={color}>
+                                <Card onClick={toggleSoldedAmount} style={color}>
+                                    <h5>Intervalo de cantidad de ventas</h5>
+                                </Card>
+                                <Collapse isOpen={soldedAmount}>
+                                    <FilterRange
+                                        type="ventas"
+                                        toggle={toggleSoldedAmount}
+                                        filters={props.filters}
+                                        setFilters={props.setFilters} />
+                                </Collapse>
+                            <Card onClick={toggleSeller} style={color}>
                                 <h5>Nombre de usuario del Vendedor</h5>
                             </Card>
-                            <Collapse isOpen={solder}>
-                                {/* ACÁ HAY QUE GENERAR UN COMPONENTE QUE RECORRA TODOS LOS ELEMENTOS, 
-                            EXTRAIGA LOS VENDEDORES, LOS META EN EL SELECT Y MANEJE LA SELECCIÓN DE ELLOS
-                            TAL CUAL SE HIZO CON LOS DE LAS CARACTERÍSTICAS */}
-                                <FilterBySolder
+                            <Collapse isOpen={seller}>
+                                <FilterBySeller
                                     rawData={props.rawData}
-                                    setRawData={props.setRawData} />
+                                    toggle={toggleSeller}
+                                    filters={props.filters}
+                                    setFilters={props.setFilters} />
                             </Collapse>
                         </CardBody>
                     </Card>
@@ -105,5 +110,5 @@ const FiltersDropdown = (props) => {
 
     );
 }
-//SE HACE CON SELECT LIST, ver "Bootstrap Select List" en (https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp)
+
 export default FiltersDropdown;

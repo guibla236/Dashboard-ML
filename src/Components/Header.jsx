@@ -1,31 +1,27 @@
-import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import {
-    DropdownItem,
-    DropdownToggle,
     NavbarBrand,
-    UncontrolledDropdown,
     Navbar,
-    DropdownMenu,
-    Nav
+    Nav,
+    NavItem,
+    NavLink
 } from 'reactstrap';
 
 const Header = () => {
+    let history = useHistory();
+    function howTo(){
+        history.push('/how-to-generate-data');
+    }
     return (
         <div>
             <Navbar color="dark" expand="md">
-                <NavbarBrand>Dashboard MeLi</NavbarBrand>
+                <NavbarBrand className="navbar-text" href="/">Dashboard</NavbarBrand>
                 <Nav className="mr-auto" navbar>
+                    <NavItem>
+                        <NavLink className="navbar-text" onClick={howTo}>Cómo generar datos</NavLink>
+                    </NavItem>
                 </Nav>
-                <UncontrolledDropdown>
-                    <DropdownToggle>
-                        Options
-                    </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem>Item 1</DropdownItem>
-                        <DropdownItem>Item 2</DropdownItem>
-                        <DropdownItem>Item 3</DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
             </Navbar>
         </div>
     )

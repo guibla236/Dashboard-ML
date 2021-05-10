@@ -1,4 +1,4 @@
-[
+const cafeteras = [
     {
         "caract_bas": {
             "con emisión de vapor": "sí",
@@ -3941,3 +3941,5 @@
         "ventas": 0
     }
 ]
+
+export default cafeteras;

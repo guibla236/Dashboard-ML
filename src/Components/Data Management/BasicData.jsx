@@ -12,22 +12,9 @@ function getBasicFeatures(data) {
                 b[elem].push(sampleElement["caract_bas"][elem]);
             }
         })
-
     }
     data.map(obtener_caract_bas);
     return b;
-}
-
-function filterDataByBasicFeatures(data, setData, item, value) {
-    let query = [item, value];
-    function filterFunction(sampleElement) {
-        //sampleElement is the individual article
-        if (sampleElement["caract_bas"][this[0]] === this[1]) {
-            return true;
-        }
-        return false;
-    }
-    setData(data.filter(filterFunction, query));
 }
 
 const BasicData = (props) => {
@@ -41,12 +28,27 @@ const BasicData = (props) => {
     const [basicas, setBasicas] = useState(state_base);
 
     const toggle = (variable) => {
-        console.log("TOGGLE")
         const oldBasicas = { ...basicas }
         oldBasicas[variable] = !oldBasicas[variable]
         setBasicas(oldBasicas)
     };
-    
+
+    function filterDataByBasicFeatures(item, value) {
+        
+        if (props.filters.basic === undefined) {
+            props.filters.basic = [[item, value]]
+        }
+        
+        else {
+            props.filters.basic.push([item, value]);
+        }
+
+        props.setFilters({...props.filters});
+        props.toggle();
+        setBasicas(state_base);
+    }
+
+
     const colorItem = { backgroundColor: 'lightgray' }
 
     return (
@@ -64,8 +66,7 @@ const BasicData = (props) => {
                                         <Button key={subitem}
                                             className="capitalize"
                                             color="secondary"
-                                            onClick={e => filterDataByBasicFeatures(props.rawData,
-                                                props.setRawData,
+                                            onClick={e => filterDataByBasicFeatures(
                                                 item,
                                                 data[item][subitem])}
                                             size="sm">

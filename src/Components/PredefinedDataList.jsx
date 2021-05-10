@@ -9,10 +9,10 @@ import {
 const ListOfPredefinedData = (props) => {
     return (
         <>
-            <Card>
+            <Card style={{"background-color":"#282c34"}}>
                 <CardTitle tag="h5">{props.title}</CardTitle>
                 <CardText>{props.details}</CardText>
-                <Button onClick={props.onSelectedData}>Utilizar estos datos</Button>
+                <Button onClick={e=>props.onSelectedData(props.data)}>Utilizar estos datos</Button>
             </Card>
         </>
     )
