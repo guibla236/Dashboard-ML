@@ -10,5 +10,5 @@ To get the data you need to download [this web app](https://github.com/guibla236
 
 ## To do
 * In this first version, you can create a scatter plot with prices and solded quantities in the axis. The idea is to create different and more complex graphics in later versions.
-* The way to get the data must be improved. To do that, this app should be all-in-one (scrape the data and plot).
+* The way to get the data must be improved. To do that, this app should be all-in-one (scrape the data and graph it).
 
